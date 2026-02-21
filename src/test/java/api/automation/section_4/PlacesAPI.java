@@ -28,8 +28,7 @@ public class PlacesAPI {
 				+ "  ],\r\n"
 				+ "  \"website\": \"http://google.com\",\r\n"
 				+ "  \"language\": \"French-IN\"\r\n"
-				+ "}\r\n"
-				+ "").
+				+ "}\r\n").
 		when().log().all().
 		post("/maps/api/place/add/json").
 		then().log().all().
