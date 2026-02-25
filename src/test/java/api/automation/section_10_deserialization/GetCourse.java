@@ -1,5 +1,14 @@
 package api.automation.section_10_deserialization;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties
 public class GetCourse {
     private String instructor;
     private String url;
@@ -7,53 +16,4 @@ public class GetCourse {
     private String expertise;
     private Courses courses;
     private String linkedin;
-
-    public Courses getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Courses courses) {
-        this.courses = courses;
-    }
-
-    public String getServices() {
-
-        return services;
-    }
-
-    public void setServices(String services) {
-        this.services = services;
-    }
-
-    public String getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getExpertise() {
-        return expertise;
-    }
-
-    public void setExpertise(String expertise) {
-        this.expertise = expertise;
-    }
-
-    public String getLinkedin() {
-        return linkedin;
-    }
-
-    public void setLinkedin(String linkedin) {
-        this.linkedin = linkedin;
-    }
 }

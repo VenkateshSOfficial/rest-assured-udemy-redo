@@ -53,6 +53,7 @@ public class Jira {
         defectId = js.getString("id");
         System.out.println(createIssueResponse);
         System.out.println("ID: " + defectId);
+
     }
 
     @Test(dependsOnMethods = "createIssue")

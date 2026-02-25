@@ -1,5 +1,4 @@
-package api.automation.section_10_deserialization;
-
+package api.automation.section_11_serialization;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -9,8 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties
-public class Api {
-    private String courseTitle;
-    private String price;
+public class Location {
+    private double lat;
+    private double lng;
 }

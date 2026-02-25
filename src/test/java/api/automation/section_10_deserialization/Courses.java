@@ -1,34 +1,18 @@
 package api.automation.section_10_deserialization;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties
 public class Courses {
-
     private List<WebAutomation> webAutomation;
-    private List<Mobile> mobile;
     private List<Api> api;
-
-    public List<WebAutomation> getWebAutomation() {
-        return webAutomation;
-    }
-
-    public void setWebAutomation(List<WebAutomation> webAutomation) {
-        this.webAutomation = webAutomation;
-    }
-
-    public List<Mobile> getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(List<Mobile> mobile) {
-        this.mobile = mobile;
-    }
-
-    public List<Api> getApi() {
-        return api;
-    }
-
-    public void setApi(List<Api> api) {
-        this.api = api;
-    }
+    private List<Mobile> mobile;
 }
