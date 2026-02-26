@@ -1,7 +1,15 @@
-package api.automation.section_11_serialization;
+package api.automation.section_12_request_response_specBuilders;
 
 
+import api.automation.section_11_serialization.Location;
+import api.automation.section_11_serialization.Place;
+import api.automation.section_11_serialization.PlaceResp;
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -10,7 +18,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class SerializePlaces {
+public class SpecBuildersPlaces {
     String place_id;
 
     Location location;
@@ -21,6 +29,13 @@ public class SerializePlaces {
     }
     @Test
     public void CreatePlaceAPICall() {
+        RequestSpecification reqSpec = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+                .addQueryParam("key", "qaclick123")
+                .setContentType(ContentType.JSON).build();
+        ResponseSpecification respSpec = new ResponseSpecBuilder().
+                                         expectStatusCode(200).
+                                         expectContentType(ContentType.JSON).build();
+
         Place place = new Place();
         List<String> list = new ArrayList<>();
         location = new Location();
@@ -37,14 +52,11 @@ public class SerializePlaces {
         place.setTypes(list);
         place.setWebsite("https://rahulshettyacademy.com");
         place.setLanguage("Italian-IN");
-        PlaceResp resp = given().log().all().
-                queryParam("key", "qaclick123").
-                header("Content-Type", "application/json").
+        PlaceResp resp = given().log().all().spec(reqSpec).
                 body(place).
                 when().log().all().
                 post("/maps/api/place/add/json").
-                then().log().all().
-                assertThat().statusCode(200).extract().response().as(PlaceResp.class);
+                then().log().all().spec(respSpec).extract().response().as(PlaceResp.class);
 
         place_id=resp.getPlace_id();
         System.out.println("Place ID: "+place_id);
